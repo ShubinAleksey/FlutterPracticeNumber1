@@ -1,16 +1,38 @@
-# flutter_practice_1
+# Практическая работа №1
+## Тема: Создание макетов Flutter
+### Цель работы: создать макеты Figma через Flutter.
 
-A new Flutter project.
+### Ход работы:
+1.	Первая верстка макета
 
-## Getting Started
+![](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/master/images/1.jpg "Первая верстка макета")
 
-This project is a starting point for a Flutter application.
+1.1. Структура первого макета
 
-A few resources to get you started if this is your first Flutter project:
+![](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/master/images/1.1.png "Структура первого макета (1)")
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+![](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/master/images/1.1.1.png "Структура первого макета (2)")
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2. Вторая верстка макета
+
+![](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/master/images/2.jpg "Вторая верстка макета")
+
+2.1. Структура второго макета
+
+![](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/master/images/2.1.png "Структура второго макета")
+
+3. Третья верстка макета
+
+![](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/master/images/3.jpg "Третья верстка макета")
+
+3.1. Структура третьего макета
+
+![](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/master/images/3.1.png "Структура третьего макета (1)")
+
+![](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/master/images/3.1.1.png "Структура третьего макета (2)")
+
+![](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/master/images/3.1.1.1.png "Структура третьего макета (3)")
+
+![](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/master/images/3.1.1.1.1.png "Структура третьего макета (4)")
+
+### Вывод: в процессе выполнения практической работы были получены навыки и закреплены навыки в разработке дизайна Flutter.
