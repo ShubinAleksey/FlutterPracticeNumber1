@@ -12,8 +12,6 @@ abstract class DataBaseRequest {
   static const String tableSizeTovar = 'SizeTovar';
 
   static const String tableTovar = 'Tovar';
-
-  static const String tableClient = 'Client';
   
   static const String tableFavorites = 'Favorites';
 
@@ -28,7 +26,6 @@ abstract class DataBaseRequest {
     tableColorTovar,
     tableSizeTovar,
     tableTovar,
-    tableClient,
     tableFavorites,
     tableOrder,
     tableOrderClient,
@@ -41,7 +38,6 @@ abstract class DataBaseRequest {
     _createTableColorTovar,
     _createTableSizeTovar,
     _createTableTovar,
-    _createTableClient,
     _createTableFavorites,
     _createTableOrder,
     _createTableOrderClient,
@@ -49,34 +45,74 @@ abstract class DataBaseRequest {
 
   /// Запрос для создания таблицы Role
   static const String _createTableRole =
-      'CREATE TABLE "$tableRole" ("id" INTEGER, "role" TEXT NOT NULL UNIQUE, PRIMARY KEY("id" AUTOINCREMENT))';
+      '''CREATE TABLE "$tableRole" (
+        "id" INTEGER, 
+        "role" TEXT NOT NULL UNIQUE, 
+        PRIMARY KEY("id" AUTOINCREMENT))''';
 
   /// Запрос для создания таблицы Users
   static const String _createTableUsers =
-      'CREATE TABLE "$tableUsers" ("id"	INTEGER, "login"	TEXT NOT NULL UNIQUE,"password"	TEXT NOT NULL,"id_role"	INTEGER,FOREIGN KEY("id_role") REFERENCES "Role"("id") ON DELETE CASCADE, PRIMARY KEY("id"))';
+      '''CREATE TABLE "$tableUsers" (
+        "id" INTEGER, 
+        "login"	TEXT NOT NULL UNIQUE,
+        "password" TEXT NOT NULL,
+        "name" TEXT NOT NULL,
+        "surname" TEXT NOT NULL,
+        "middleName" TEXT,
+        "seriaPass" INTEGER NOT NULL,
+        "nomerPass" INTEGER NOT NULL,
+        "id_role"	INTEGER,FOREIGN KEY("id_role") REFERENCES "$tableRole"("id") ON DELETE CASCADE, 
+        PRIMARY KEY("id" AUTOINCREMENT))''';
 
   static const String _createTableTypeTovar =
-      'CREATE TABLE "$tableTypeTovar" ("id" INTEGER, "NameType" TEXT NOT NULL UNIQUE, PRIMARY KEY("id"))';
+      '''CREATE TABLE "$tableTypeTovar" (
+        "id" INTEGER, 
+        "nameType" TEXT NOT NULL UNIQUE, 
+        PRIMARY KEY("id" AUTOINCREMENT))''';
   
   static const String _createTableColorTovar =
-      'CREATE TABLE "$tableColorTovar" ("id" INTEGER, "NameColor" TEXT NOT NULL UNIQUE, PRIMARY KEY("id"))';
+      '''CREATE TABLE "$tableColorTovar" (
+        "id" INTEGER, 
+        "nameColor" TEXT NOT NULL UNIQUE, 
+        PRIMARY KEY("id" AUTOINCREMENT))''';
 
   static const String _createTableSizeTovar =
-      'CREATE TABLE "$tableSizeTovar" ("id" INTEGER, "SizeColor" TEXT NOT NULL UNIQUE, PRIMARY KEY("id"))';
+      '''CREATE TABLE "$tableSizeTovar" (
+        "id" INTEGER, 
+        "sizeColor" TEXT NOT NULL UNIQUE, 
+        PRIMARY KEY("id" AUTOINCREMENT))''';
   
   static const String _createTableTovar =
-      'CREATE TABLE "$tableTovar" ("id" INTEGER, "NameTovar" TEXT NOT NULL UNIQUE, "Date" TEXT NOT NULL, "PriceTovar" REAL NOT NULL, "id_typetovar" INTEGER,FOREIGN KEY("id_typetovar") REFERENCES "TypeTovar"("id"), "id_colortovar" INTEGER,FOREIGN KEY("id_colortovar") REFERENCES "ColorTovar"("id"), "id_sizetovar" INTEGER,FOREIGN KEY("id_sizetovar") REFERENCES "SizeTovar"("id"), PRIMARY KEY("id"), ON DELETE CASCADE)';
-
-  static const String _createTableClient =
-      'CREATE TABLE "$tableClient" ("id" INTEGER, "Name" TEXT NOT NULL, "Surname" TEXT NOT NULL, "Telephone" INTEGER NOT NULL UNIQUE, "Email" TEXT NOT NULL UNIQUE, PRIMARY KEY("id"))';
+      '''CREATE TABLE "$tableTovar" (
+        "id" INTEGER, 
+        "nameTovar" TEXT NOT NULL UNIQUE, 
+        "date" TEXT NOT NULL, 
+        "priceTovar" REAL NOT NULL, 
+        "id_typetovar" INTEGER, FOREIGN KEY("id_typetovar") REFERENCES "$tableTypeTovar"("id") ON DELETE CASCADE, 
+        "id_colortovar" INTEGER, FOREIGN KEY("id_colortovar") REFERENCES "$tableColorTovar"("id") ON DELETE CASCADE, 
+        "id_sizetovar" INTEGER, FOREIGN KEY("id_sizetovar") REFERENCES "$tableSizeTovar"("id") ON DELETE CASCADE, 
+        PRIMARY KEY("id" AUTOINCREMENT))''';
 
   static const String _createTableFavorites =
-      'CREATE TABLE "$tableFavorites" ("id" INTEGER, "id_tovar" INTEGER,FOREIGN KEY("id_tovar") REFERENCES "Tovar"("id"), "id_client" INTEGER,FOREIGN KEY("id_client") REFERENCES "Client"("id"), PRIMARY KEY("id"), ON DELETE CASCADE)';
+      '''CREATE TABLE "$tableFavorites" (
+        "id" INTEGER, 
+        "id_tovar" INTEGER, FOREIGN KEY("id_tovar") REFERENCES "$tableTovar"("id") ON DELETE CASCADE, 
+        "id_users" INTEGER, FOREIGN KEY("id_users") REFERENCES "$tableUsers"("id") ON DELETE CASCADE, 
+        PRIMARY KEY("id" AUTOINCREMENT))''';
   
   static const String _createTableOrder =
-      'CREATE TABLE "$tableOrder" ("id" INTEGER, "NameOrder" TEXT NOT NULL UNIQUE, PRIMARY KEY("id"))';
+      '''CREATE TABLE "$tableOrder" ("id" INTEGER, 
+      "NameOrder" TEXT NOT NULL UNIQUE, 
+      PRIMARY KEY("id" AUTOINCREMENT))''';
 
   static const String _createTableOrderClient =
-      'CREATE TABLE "$tableOrderClient" ("id" INTEGER, "NumberOrder" INTEGER NOT NULL UNIQUE, "NumberTaken" INTEGER NOT NULL, "id_client" INTEGER,FOREIGN KEY("id_client") REFERENCES "Client"("id"), "id_order" INTEGER,FOREIGN KEY("id_order") REFERENCES "Order"("id"), "id_users" INTEGER,FOREIGN KEY("id_users") REFERENCES "Users"("id"), PRIMARY KEY("id"), ON DELETE CASCADE)'; 
-static String deleteTable(String table) => 'DROP TABLE $table';
+      '''CREATE TABLE "$tableOrderClient" (
+        "id" INTEGER, 
+        "numberOrder" INTEGER NOT NULL UNIQUE, 
+        "numberTaken" INTEGER NOT NULL, 
+        "id_order" INTEGER, FOREIGN KEY("id_order") REFERENCES "$tableOrder"("id") ON DELETE CASCADE, 
+        "id_users" INTEGER, FOREIGN KEY("id_users") REFERENCES "$tableUsers"("id") ON DELETE CASCADE, 
+        PRIMARY KEY("id" AUTOINCREMENT))'''; 
+  
+  static String deleteTable(String table) => 'DROP TABLE $table';
 }

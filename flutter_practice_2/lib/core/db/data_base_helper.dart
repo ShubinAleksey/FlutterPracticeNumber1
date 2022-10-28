@@ -2,10 +2,11 @@ import 'dart:io';
 
 import 'package:flutter_practice_2/common/data_base_request.dart';
 import 'package:flutter_practice_2/data/model/role.dart';
-import 'package:flutter_practice_2/data/model/sizetovar.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
+// ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 class DataBaseHelper{
   static final DataBaseHelper instance = DataBaseHelper._instance();
@@ -23,7 +24,7 @@ class DataBaseHelper{
     _pathDB = join(_appDocumentDirectory.path, 'shopclothesDB.db');
     
     if(Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-      // todo
+      database = await openDatabase(join(await getDatabasesPath(), 'shopclothesDB.db'));
     } else {
       database = await openDatabase(
         _pathDB,
@@ -49,18 +50,17 @@ class DataBaseHelper{
     try{
       db.insert(DataBaseRequest.tableRole, Role(role: 'Администратор').toMap());
       db.insert(DataBaseRequest.tableRole, Role(role: 'КассирПродавец').toMap());
-      db.insert(DataBaseRequest.tableSizeTovar, SizeTovar(nameSize: 'КассирПродавец').toMap());
     }on DatabaseException catch(e) {
       print(e.result);
     }
   }
 
-  Future<void> onDropDataBase() async {
+  Future<void> onDropDataBase(String join) async {
     database.close();
     if(Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-      // todo
-    } else {
       deleteDatabase(_pathDB);
+    } else {
+      await databaseFactoryFfi.deleteDatabase(_pathDB);
     }
   }
   
