@@ -28,4 +28,14 @@
 
 ![OrderModel](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_practice_2/flutter_practice_2/assets/practice2_OrderModel.png "OrderModel")
 
+5) Проверим заполнение таблиц через приложение Android Studio и библиотекой DB Navigator
+
+![tableRole](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_practice_2/flutter_practice_2/assets/practice2_tableRole.png "tableRole")
+
+![tableSizeTovar](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_practice_2/flutter_practice_2/assets/practice2_SizeTovar.png "tableSizeTovar")
+
+![tableColorTovar](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_practice_2/flutter_practice_2/assets/practice2_tableColorTovar.png "tableColorTovar")
+
+![tableTypeTovar](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_practice_2/flutter_practice_2/assets/practice2_tableTypeTovar.png "tableTypeTovar")
+
 #### Вывод: в ходе выполнения практической работы были получены навыки по инициализации базы данных, создании моделей, запросов. Создание класса-хелпера который манипулируют с сущностябми таблиц и самой базы данных.
