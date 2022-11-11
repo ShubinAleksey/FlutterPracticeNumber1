@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice_2/core/db/data_base_helper.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await DataBaseHelper.instance.init();
   runApp(const MyApp());
 }
 

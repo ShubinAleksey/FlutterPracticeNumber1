@@ -15,7 +15,7 @@ abstract class DataBaseRequest {
   
   static const String tableFavorites = 'Favorites';
 
-  static const String tableOrder = 'Order';
+  static const String tableOrderTovar = 'OrderTovar';
 
   static const String tableOrderClient = 'OrderClient';
 
@@ -27,7 +27,7 @@ abstract class DataBaseRequest {
     tableSizeTovar,
     tableTovar,
     tableFavorites,
-    tableOrder,
+    tableOrderTovar,
     tableOrderClient,
   ];
 
@@ -39,7 +39,7 @@ abstract class DataBaseRequest {
     _createTableSizeTovar,
     _createTableTovar,
     _createTableFavorites,
-    _createTableOrder,
+    _createTableOrderTovar,
     _createTableOrderClient,
   ];
 
@@ -61,7 +61,8 @@ abstract class DataBaseRequest {
         "middleName" TEXT,
         "seriaPass" INTEGER NOT NULL,
         "nomerPass" INTEGER NOT NULL,
-        "id_role"	INTEGER,FOREIGN KEY("id_role") REFERENCES "$tableRole"("id") ON DELETE CASCADE, 
+        "id_role"	INTEGER,
+        FOREIGN KEY("id_role") REFERENCES "$tableRole"("id") ON DELETE CASCADE, 
         PRIMARY KEY("id" AUTOINCREMENT))''';
 
   static const String _createTableTypeTovar =
@@ -79,7 +80,7 @@ abstract class DataBaseRequest {
   static const String _createTableSizeTovar =
       '''CREATE TABLE "$tableSizeTovar" (
         "id" INTEGER, 
-        "sizeColor" TEXT NOT NULL UNIQUE, 
+        "nameSize" TEXT NOT NULL UNIQUE, 
         PRIMARY KEY("id" AUTOINCREMENT))''';
   
   static const String _createTableTovar =
@@ -88,31 +89,41 @@ abstract class DataBaseRequest {
         "nameTovar" TEXT NOT NULL UNIQUE, 
         "date" TEXT NOT NULL, 
         "priceTovar" REAL NOT NULL, 
-        "id_typetovar" INTEGER, FOREIGN KEY("id_typetovar") REFERENCES "$tableTypeTovar"("id") ON DELETE CASCADE, 
-        "id_colortovar" INTEGER, FOREIGN KEY("id_colortovar") REFERENCES "$tableColorTovar"("id") ON DELETE CASCADE, 
-        "id_sizetovar" INTEGER, FOREIGN KEY("id_sizetovar") REFERENCES "$tableSizeTovar"("id") ON DELETE CASCADE, 
+        "id_typetovar" INTEGER, 
+        "id_colortovar" INTEGER,
+        "id_sizetovar" INTEGER,
+        FOREIGN KEY("id_typetovar") REFERENCES "$tableTypeTovar"("id") ON DELETE CASCADE, 
+        FOREIGN KEY("id_colortovar") REFERENCES "$tableColorTovar"("id") ON DELETE CASCADE, 
+        FOREIGN KEY("id_sizetovar") REFERENCES "$tableSizeTovar"("id") ON DELETE CASCADE, 
         PRIMARY KEY("id" AUTOINCREMENT))''';
 
   static const String _createTableFavorites =
       '''CREATE TABLE "$tableFavorites" (
         "id" INTEGER, 
-        "id_tovar" INTEGER, FOREIGN KEY("id_tovar") REFERENCES "$tableTovar"("id") ON DELETE CASCADE, 
-        "id_users" INTEGER, FOREIGN KEY("id_users") REFERENCES "$tableUsers"("id") ON DELETE CASCADE, 
+        "id_tovar" INTEGER, 
+        "id_users" INTEGER,
+        FOREIGN KEY("id_tovar") REFERENCES "$tableTovar"("id") ON DELETE CASCADE, 
+        FOREIGN KEY("id_users") REFERENCES "$tableUsers"("id") ON DELETE CASCADE, 
+        PRIMARY KEY("id" AUTOINCREMENT))''';
+
+  static const String _createTableOrderTovar =
+      '''CREATE TABLE "$tableOrderTovar" (
+        "id" INTEGER, 
+        "NameOrder" TEXT NOT NULL UNIQUE,
+        "id_tovar" INTEGER,
+        FOREIGN KEY("id_tovar") REFERENCES "$tableTovar"("id") ON DELETE CASCADE, 
         PRIMARY KEY("id" AUTOINCREMENT))''';
   
-  static const String _createTableOrder =
-      '''CREATE TABLE "$tableOrder" ("id" INTEGER, 
-      "NameOrder" TEXT NOT NULL UNIQUE, 
-      PRIMARY KEY("id" AUTOINCREMENT))''';
-
   static const String _createTableOrderClient =
       '''CREATE TABLE "$tableOrderClient" (
         "id" INTEGER, 
         "numberOrder" INTEGER NOT NULL UNIQUE, 
         "numberTaken" INTEGER NOT NULL, 
-        "id_order" INTEGER, FOREIGN KEY("id_order") REFERENCES "$tableOrder"("id") ON DELETE CASCADE, 
-        "id_users" INTEGER, FOREIGN KEY("id_users") REFERENCES "$tableUsers"("id") ON DELETE CASCADE, 
-        PRIMARY KEY("id" AUTOINCREMENT))'''; 
-  
-  static String deleteTable(String table) => 'DROP TABLE $table';
+        "id_order" INTEGER, 
+        "id_users" INTEGER, 
+        FOREIGN KEY("id_order") REFERENCES "$tableOrderTovar"("id") ON DELETE CASCADE, 
+        FOREIGN KEY("id_users") REFERENCES "$tableUsers"("id") ON DELETE CASCADE, 
+        PRIMARY KEY("id" AUTOINCREMENT))''';
+
+        static String deleteTable(String tableName) =>'drop table $tableName';
 }

@@ -19,5 +19,5 @@ class ClientOrder extends ClientOrderEntity {
 
   factory ClientOrder.toFromMap(Map<String,dynamic> json) {
     return ClientOrder(nameOrder: json['nameOrder'],nameUser: json['nameUser']);
-  } 
+  }
 }
