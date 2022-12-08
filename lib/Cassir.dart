@@ -29,7 +29,7 @@ class _CassirState extends State<Cassir> {
                         ))),
                 const Padding(
                   padding: EdgeInsets.only(top: 5, bottom: 35),
-                  child: Text("Добро пожаловать в систему кассира",
+                  child: Text("Добро пожаловать в систему кассира.",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Color.fromARGB(255, 21, 115, 178),
