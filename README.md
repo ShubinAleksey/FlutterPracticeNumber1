@@ -13,7 +13,7 @@
 
 ![AuthUseCase](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_prectice3/assets/practice3_AuthUseCase.png "AuthUseCase")
 
-3) Теперь на уровне domain создаются ещё две папки usecase и repositories в данных двух папках будут находится взаимосвязанные классы, которые будут передовать в данные методы "Авторизации" и "Регистрации" параметры атрибутов сущностей, которые необходимы для работы.
+3) Теперь на уровне domain создаются ещё две папки usecase и repositories в данных двух папках будут находится взаимосвязанные классы, которые будут передавать в данные методы "Авторизации" и "Регистрации" параметры атрибутов сущностей, которые необходимы для работы.
 
 ![AuthRepositories](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_prectice3/assets/practice3_AuthRepositories.png "AuthRepositories")
 
@@ -27,7 +27,7 @@
 
 ![IfStatement](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_prectice3/assets/practice3_IfStatement.png "IfStatement")
 
-4) На фотографиях ниже представлены представления (после перехода от конкретной роли) ролей.
+5) На фотографиях ниже представлены представления (после перехода от конкретной роли) ролей.
 
 ![Cassir](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_prectice3/assets/practice3_Cassir.png "Cassir")
 
