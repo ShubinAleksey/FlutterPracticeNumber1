@@ -21,13 +21,13 @@
 
 ![AuthRepositoryImpl](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_prectice3/assets/practice3_AuthRepositoryImpl.png "AuthRepositoryImpl")
 
-4) Теперь создаются представления для приложения, в этих представлениях как раз будет проходить валидация атрибутов сущностей и в зависимости от конкретной роли перенаправлять на нужное представление
+5) Теперь создаются представления для приложения, в этих представлениях как раз будет проходить валидация атрибутов сущностей и в зависимости от конкретной роли перенаправлять на нужное представление
 
 ![Validation](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_prectice3/assets/practice3_Validation.png "Validation")
 
 ![IfStatement](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_prectice3/assets/practice3_IfStatement.png "IfStatement")
 
-5) На фотографиях ниже представлены представления (после перехода от конкретной роли) ролей.
+6) На фотографиях ниже представлены представления (после перехода от конкретной роли) ролей.
 
 ![Cassir](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_prectice3/assets/practice3_Cassir.png "Cassir")
 
