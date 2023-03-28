@@ -1,6 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+final FirebaseFirestore fireStore = FirebaseFirestore.instance;
+SharedPreferences? sharedPreferences;
 
 class Registration extends StatefulWidget {
   const Registration({Key? key}) : super(key: key);
@@ -55,6 +59,16 @@ class _MyHomePage2State extends State<MyHomePage2> {
         final user = await FirebaseAuth.instance.createUserWithEmailAndPassword(
             email: _userNameController2.text,
             password: _passwordController2.text);
+        final userAdd = fireStore.collection('users');
+        userAdd
+            .add(
+              {
+                'name': _userNameController2.text,
+                'password': _passwordController2.text,
+              },
+            )
+            .then((value) => print('Добавить пользователя'))
+            .catchError((error) => print('Ошибка добавления: $error'));
         const snackBar = SnackBar(
           content: Text('Успешная регистрация'),
         );
@@ -69,11 +83,14 @@ class _MyHomePage2State extends State<MyHomePage2> {
 
     void signInEmailPassword() async {
       try {
+        sharedPreferences = await SharedPreferences.getInstance();
         final user = await FirebaseAuth.instance.signInWithEmailAndPassword(
             email: _userNameController.text,
             password: _passwordController.text);
         print(user.user?.email);
         print(user.user?.uid);
+        sharedPreferences!.setString('users', _userNameController.text);
+        print(sharedPreferences!.getString('users'));
         const snackBar = SnackBar(
           content: Text('Успешная авторизация'),
         );
@@ -133,7 +150,7 @@ class _MyHomePage2State extends State<MyHomePage2> {
             width: double.infinity,
             padding: const EdgeInsets.only(top: 120),
             decoration:
-                const BoxDecoration(color: Color.fromARGB(248, 68, 139, 226)),
+                const BoxDecoration(color: Color.fromARGB(248, 186, 68, 226)),
             child: Container(
               height: double.infinity,
               decoration: const BoxDecoration(

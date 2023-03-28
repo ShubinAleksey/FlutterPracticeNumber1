@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../home/homestorage.dart';
+
+SharedPreferences? sharedPreferences;
 class Authorization extends StatefulWidget {
   const Authorization({Key? key}) : super(key: key);
 
@@ -71,15 +75,19 @@ class _MyHomePageState extends State<MyHomePage> {
 
     void signInEmailPassword() async {
       try {
+        sharedPreferences = await SharedPreferences.getInstance();
         final user = await FirebaseAuth.instance.signInWithEmailAndPassword(
             email: _userNameController.text,
             password: _passwordController.text);
         print(user.user?.email);
         print(user.user?.uid);
+        sharedPreferences!.setString('users', _userNameController.text);
+        print(sharedPreferences!.getString('users'));
         const snackBar = SnackBar(
           content: Text('Успешная авторизация'),
         );
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        Navigator.of(context, rootNavigator: true).pushReplacement(MaterialPageRoute(builder: (context) => const HomeStorage()));
       } on FirebaseAuthException catch (e) {
         const snackBar = SnackBar(
           content: Text('Ошибка ввода данных'),
@@ -113,6 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
         const snackBar = SnackBar(
           content: Text('Успешная авторизация под анонимным пользователем'),
         );
+        Navigator.of(context, rootNavigator: true).pushReplacement(MaterialPageRoute(builder: (context) => const HomeStorage()));
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       } on FirebaseAuthException catch (e) {
         print(e);
@@ -153,7 +162,7 @@ class _MyHomePageState extends State<MyHomePage> {
             width: double.infinity,
             padding: const EdgeInsets.only(top: 120),
             decoration:
-                const BoxDecoration(color: Color.fromARGB(248, 68, 139, 226)),
+                const BoxDecoration(color: Color.fromARGB(248, 186, 68, 226)),
             child: Container(
               height: double.infinity,
               decoration: const BoxDecoration(
@@ -204,7 +213,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                     child: TextFormField(
-                      controller: _passwordController,
                       obscureText: true,
                       decoration: const InputDecoration(
                         border: UnderlineInputBorder(),
