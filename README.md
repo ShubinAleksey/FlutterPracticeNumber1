@@ -1,46 +1,35 @@
-# Практическая работа №8
-## Тема: FirebaseAuth
-### Цель работы: познакомиться с Firebase. Разработать приложение на нереляционной базе данных с использованием сервиса Firebase и метод FirebaseAuth.
+# Практическая работа №9
+## Тема: FireStore
+### Цель работы: познакомиться с FireStore. Разработать приложение на реализацию сохранения данных пользователей на основе практической работы №8.
 
-Firebase - это облачная база данных, которая позволяет пользователям хранить и получать сохраненную информацию, а также имеет удобные средства и методы взаимодействия с ней.
+Firestore - это база данных документов NoSQL, созданная для автоматического масштабирования, высокой производительности и простоты разработки приложений. Хотя интерфейс Firestore обладает многими из тех же функций, что и традиционные базы данных, будучи базой данных NoSQL, он отличается от них тем, как описывает взаимосвязи между объектами данных.
 
 Ход работы:
-1.	Аутентификация пользователя по почте и логину 
-2.	Аутентификация анонимного пользователя
-3.	Аутентификация в Firebase с использованием ссылок электронной почты
+1.	Сохранение данных при регистрации пользователя в firestore
+2.	Редактирование данных пользователя в firestore.
+3.	Работа с данными CRUD
+4.  Динамическое обновление данных
 
-1) Созданиdе различных методов для взаимодействия FirebaseAuth в приложении
+1) Подключение Cloud Firestore в Firebase
 
-![image](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_practice8/images/emailValidation.png)
+![image](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_prectice9/images/PR9%2610CloudFire.png)
 
-![image](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_practice8/images/registration.png)
+2) Добавление коллекции в Cloud Firestore в метод регистрации пользователя в Firebase
 
-![image](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_practice8/images/authorization.png)
+![image](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_prectice9/images/PR9%2610CollectionUsers.png)
 
-![image](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_practice8/images/anonymous.png)
+3) Обновление профиля пользователя
 
-![image](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_practice8/images/link.png)
+![image](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_prectice9/images/PR9%2610UpdateProfile.png)
 
 Результат работы:
 
-1) Регистрация пользователя
+1) Обновление профиля
 
-![image](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_practice8/images/registrationUI.png)
+![image](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_prectice9/images/PR9%2610UpdateProfileUI.jpg)
 
-2) Авторизация пользователя
+2) Динамическое обновление пользователей
 
-![image](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_practice8/images/authorizationUI.png)
+![image](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_prectice9/images/PR9%2610DynamicUsersUI.jpg)
 
-3) Анонимая авторизация пользователя
-
-![image](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_practice8/images/anonymousUI.png)
-
-4) Авторизация пользователя по ссылке на почту
-
-![image](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_practice8/images/emailLink.png)
-
-5) Созданные пользователи в FirebaseAuth
-
-![image](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_practice8/images/firebase.png)
-
-### Вывод: в ходе практической работы познакомился с Firebase. Разработал приложение на нереляционной базе данных с использованием сервиса Firebase и метод FirebaseAuth.
+### Вывод: в ходе практической работы познакомился с Firestore. Разработал приложение на реализацию сохранения данных пользователей на основе практической работы №8.
