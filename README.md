@@ -39,6 +39,6 @@ Filepicker - это элемент управления, который позв
 
 2) Альбом картинок
 
-![image](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_practice10/images/PR9%2610AlbumUI.jpg)
+![image](https://github.com/ShubinAleksey/FlutterPracticeNumber1/blob/flutter_practice10/images/PR9%2610AlbumUI2.jpg)
 
 ### Вывод: в ходе практической работы познакомился с Firebase Storage, Filepicker. Разработал приложение на реализацию функционала работы с картинками на основе практической работы № 8 и 9.
