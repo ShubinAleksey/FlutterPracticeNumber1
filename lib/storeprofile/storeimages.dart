@@ -168,7 +168,7 @@ class _MyHomePageState extends State<MyHomePage> {
         automaticallyImplyLeading: false,
         foregroundColor: Colors.blue,
         title: const Text(
-          'Мои фото',
+          'Альбом',
           style: TextStyle(color: Colors.greenAccent),
         ),
         actions: [

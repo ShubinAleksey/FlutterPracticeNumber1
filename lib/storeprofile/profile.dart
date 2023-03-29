@@ -52,6 +52,18 @@ class ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
+  void deleteProfile() {
+    querySnapshot?.docs.forEach((doc) {
+        users.doc(doc.id).delete();
+    });
+    Navigator.of(context, rootNavigator: true).pushReplacement(
+                  MaterialPageRoute(builder: (context) => const Home()));
+    const snackBar = SnackBar(
+        content: Text('Пользователь удален'),
+      );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -137,6 +149,34 @@ class ProfileScreenState extends State<ProfileScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: const [
                             Text("Редактировать профиль",
+                                style: TextStyle(
+                                    fontSize: 16, color: Colors.black)),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 50.0,
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 25, right: 25),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          deleteProfile();
+                        },
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.greenAccent),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0),
+                              ),
+                            )),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Text("Удалить профиль",
                                 style: TextStyle(
                                     fontSize: 16, color: Colors.black)),
                           ],
